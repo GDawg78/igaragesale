@@ -42,5 +42,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# RSPEC for Testing
+gem 'rspec', '~> 3.4.0'
+
+# Devise for Users and Authentication Management
+gem 'devise', '~> 4.7.3'
