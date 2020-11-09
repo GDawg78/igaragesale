@@ -1,0 +1,11 @@
+<%= form_with(model: state, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :state %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
