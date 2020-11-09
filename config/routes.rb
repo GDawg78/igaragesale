@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :items
   devise_for :users
-  root to: 'home#index'
-  #get 'home/restricted'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'home#home'
+  resources :states
+  resources :profiles
 end

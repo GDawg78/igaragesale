@@ -1,4 +1,0 @@
-class RestrictedController < ApplicationController
-
-    
-end
