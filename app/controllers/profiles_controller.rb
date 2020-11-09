@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
     before_action :set_profile, only: [:show, :edit, :update, :destroy]
-
+    before_action :authenticate_user!, only: [:create, :update]
     def index 
         @profiles = Profile.all
     end
@@ -16,8 +16,8 @@ class ProfilesController < ApplicationController
     end
 
     def create
-        @profile = Profile.new(item_params)
-    
+        @profile = Profile.new(profile_params)
+        @profile.user_id = current_user.id
         respond_to do |format|
           if @profile.save
             format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -52,7 +52,7 @@ class ProfilesController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def profile_params
-        params.require(:username).permit(:username, :first_name, :surname)
+        params.require(:profile).permit(:username, :first_name, :surname)
       end
 
 end
