@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
     before_action :set_profile, only: [:show, :edit, :update, :destroy]
+    before_action 
     before_action :authenticate_user!, only: [:create, :update]
     def index 
         @profiles = Profile.all
@@ -40,14 +41,14 @@ class ProfilesController < ApplicationController
       def destroy
         @profile.destroy
         respond_to do |format|
-          format.html { redirect_to items_url, notice: 'Profile was successfully destroyed.' }
+          format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
         end
       end
 
       private
       # Use callbacks to share common setup or constraints between actions.
       def set_profile
-        @item = Profile.find(params[:id])
+        @profile = Profile.find(params[:id])
       end
   
       # Only allow a list of trusted parameters through.
