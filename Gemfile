@@ -50,3 +50,6 @@ gem 'rspec', '~> 3.4.0'
 
 # Devise for Users and Authentication Management
 gem 'devise', '~> 4.7.3'
+
+# Amazon S3 Gem
+gem "aws-sdk-s3", "~> 1.84"
