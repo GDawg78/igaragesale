@@ -4,5 +4,6 @@ class Profile < ApplicationRecord
     has_one_attached :profile_picture
     validates :user_id, uniqueness: true
     has_many :item
+    has_one :state
 
 end
