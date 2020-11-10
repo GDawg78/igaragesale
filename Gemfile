@@ -53,3 +53,6 @@ gem 'devise', '~> 4.7.3'
 
 # Amazon S3 Gem
 gem "aws-sdk-s3", "~> 1.84"
+
+# Bootstrap
+gem "bootstrap" , "~> 4.5.3"

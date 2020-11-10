@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.profile_id = current_user.id
 
     respond_to do |format|
       if @item.save
@@ -56,6 +57,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :price, :description)
+      params.require(:item).permit(:title, :price, :description, :item_picture)
     end
 end
