@@ -9,7 +9,7 @@
   <strong>Price:</strong>
   <%= @item.price %>
 </p>
-
+<%= image_tag item.item_picture if item.item_picture.attached? %>
 <p>
   <strong>Description:</strong>
   <%= @item.description %>

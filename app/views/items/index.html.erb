@@ -15,6 +15,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
+        <td><%= image_tag item.item_picture if item.item_picture.attached? %></td>
         <td><%= item.title %></td>
         <td><%= item.price %></td>
         <td><%= item.description %></td>
