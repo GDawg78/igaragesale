@@ -15,6 +15,7 @@
   <tbody>
     <% @profiles.each do |profile| %>
       <tr>
+        <td><%= image_tag profile.profile_picture if profile.profile_picture.attached? %></td>
         <td><%= profile.username %></td>
         <td><%= profile.first_name %></td>
         <td><%= profile.surname %></td>
