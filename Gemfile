@@ -60,4 +60,5 @@ gem "bootstrap", "~> 4.5.3"
 # Stripe
 gem "stripe", "~> 5.28.0"
 
-#CanCanCan
+#CanCanCan for Authorisation
+gem 'cancancan'
