@@ -55,4 +55,9 @@ gem 'devise', '~> 4.7.3'
 gem "aws-sdk-s3", "~> 1.84"
 
 # Bootstrap
-gem "bootstrap" , "~> 4.5.3"
+gem "bootstrap", "~> 4.5.3"
+
+# Stripe
+gem "stripe", "~> 5.28.0"
+
+#CanCanCan

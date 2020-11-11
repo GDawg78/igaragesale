@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :authorise_check, only: [:edit, :destroy]
 
   def index
     @items = Item.all
@@ -18,7 +20,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.profile_id = current_user.id
+    @item.profile_id = current_user.profile.id
 
     respond_to do |format|
       if @item.save
@@ -42,11 +44,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+        @item.destroy
+        respond_to do |format|
+          format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+          format.json { head :no_content }
+        end
   end
 
   private
@@ -58,5 +60,11 @@ class ItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def item_params
       params.require(:item).permit(:title, :price, :description, :item_picture)
+    end
+    def authorise_check
+      if current_user.profile.id != @item.profile_id
+        flash[:notice] = 'You can only do this to your own items...'
+        redirect_to items_path
+      end
     end
 end

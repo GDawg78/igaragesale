@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
     before_action :set_profile, only: [:show, :edit, :update, :destroy]
-    before_action 
     before_action :authenticate_user!, only: [:create, :update]
     def index 
         @profiles = Profile.all
@@ -53,7 +52,7 @@ class ProfilesController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def profile_params
-        params.require(:profile).permit(:username, :first_name, :surname, :profile_picture)
+        params.require(:profile).permit(:username, :first_name, :surname, :profile_picture, :flat_no, :street_no, :street_name, :post_code, :state_id)
       end
 
 end

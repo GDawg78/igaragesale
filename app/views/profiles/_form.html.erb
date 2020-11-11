@@ -20,6 +20,31 @@
     <%= form.file_field :profile_picture, accept: 'image/png, image/jpeg, image/jpg' %>
   </div>
 
+  <div class="field">
+    <%= form.label :flat_no %>
+    <%= form.text_field :flat_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_no %>
+    <%= form.text_field :street_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street_name %>
+    <%= form.text_field :street_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_code %>
+    <%= form.text_field :post_code %>
+  </div>
+  
+    <div class="field">
+    <%= form.label :state %><br>
+    <%= form.collection_select :state_id, State.all, :id, :state %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
