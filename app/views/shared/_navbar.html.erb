@@ -1,10 +1,46 @@
-
-    <nav style="border-bottom: 1px solid black;">
-      <% if user_signed_in? && current_user.profile %>
-        <span>Hello <%= current_user.profile.username %></span>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path  %>
-        <%= link_to "Sign up", new_user_registration_path  %>
-      <% end %>
-    </nav>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" <%= link_to "For Sale", items_path %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" <%= link_to "Sell Something", new_item_path %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" h<%= link_to "iGarageSale", root_path %> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <% if user_signed_in? && current_user.profile %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" <span> Hello <%= current_user.profile.username %></span></a></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" <%= link_to "Logout", destroy_user_session_path, method: :delete %> </a>
+            </li>
+        <% else %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" <%= link_to "Login", new_user_session_path  %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" <%= link_to "Sign up", new_user_registration_path  %></a>
+        </ul>
+        <% end %>
+    </div>
+</nav>

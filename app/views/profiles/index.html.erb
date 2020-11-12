@@ -12,16 +12,19 @@
     </tr>
   </thead>
 
-  <tbody>
+    <tbody>
     <% @profiles.each do |profile| %>
       <tr>
-        <td><%= image_tag profile.profile_picture if profile.profile_picture.attached? %></td>
-        <td><%= profile.username %></td>
-        <td><%= profile.first_name %></td>
-        <td><%= profile.surname %></td>
-        <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" <%= image_tag profile.profile_picture if profile.profile_picture.attached? %> <%= profile.username %>
+          <div class="card-body">
+            <p class="card-text"> <%= profile.first_name %></p>
+            <%= link_to 'Show', profile %>
+            <%= link_to 'Edit', edit_profile_path(profile) %>
+            <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+          </div>
+        </div>      
       </tr>
     <% end %>
   </tbody>

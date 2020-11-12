@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :price, :description, :item_picture)
+      params.require(:item).permit(:title, :price, :description, :item_picture, :sold)
     end
     def authorise_check
       if current_user.profile.id != @item.profile_id
