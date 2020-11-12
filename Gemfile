@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
@@ -55,7 +55,7 @@ gem 'devise', '~> 4.7.3'
 gem "aws-sdk-s3", "~> 1.84"
 
 # Bootstrap
-gem 'bootstrap', '~> 5.0.0.alpha2'
+gem 'bootstrap'
 
 # Stripe
 gem "stripe", "~> 5.28.0"
