@@ -1,21 +1,79 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @item.title %>
-</p>
+<section class="mb-5">
 
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+
+            <div id="mdb-lightbox-ui"><!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+		         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+
+    </div>
+
+</div></div>
+
+            <div class="mdb-lightbox" data-pswp-uid="1">
+
+              <div class="row product-gallery mx-1">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="view overlay rounded z-depth-1 gallery-item hoverable">
+                        <%= image_tag @item.item_picture if @item.item_picture.attached? %>
+                        <div class="mask rgba-white-slight"></div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="view overlay rounded z-depth-1 gallery-item hoverable">
+                        <%# <img src="#" class="img-fluid"> %>
+                        <div class="mask rgba-white-slight"></div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="view overlay rounded z-depth-1 gallery-item hoverable">
+                        <%# <img src="#" class="img-fluid"> %>
+                        <div class="mask rgba-white-slight"></div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="view overlay rounded z-depth-1 gallery-item hoverable">
+                        <%# <img src="#" class="img-fluid"> %>
+                        <div class="mask rgba-white-slight"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-md-6">
+
+            <h1><%= @item.title %></h1>
+            <p><span class="mr-1"><strong><%= @item.price %></strong></span></p>
+            <p class="pt-1"><%= @item.description %></p>
+            <div class="table-responsive">
+            </div>
+            <hr>
 <button data-stripe="payment">Buy Item <%= number_to_currency(@item.price) %></button>
-
-<%= link_to 'Back', items_path %>
 <script src="https://js.stripe.com/v3/"></script>
 
 <script>
@@ -26,6 +84,8 @@
         });
     });
 </script>
-
 <%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Show All', items_path %>
+    </div>
+  </div>
+</section>
