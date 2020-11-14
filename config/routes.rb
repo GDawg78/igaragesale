@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :states
   resources :profiles
   resources :charges
+  match '/help', to: 'static_pages#help', via: 'get', as: :help
+  match '/about', to: 'static_pages#about', via: 'get', as: :about
+  
 end
