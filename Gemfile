@@ -60,8 +60,11 @@ gem 'bootstrap'
 # Stripe
 gem "stripe", "~> 5.28.0"
 
-#CanCanCan for Authorisation
+# CanCanCan for Authorisation
 gem 'cancancan'
 
-#Jquery for Bootstrap
+# Jquery for Bootstrap
 gem 'jquery-rails'
+
+# Ultrahook
+gem 'ultrahook'
