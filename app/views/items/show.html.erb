@@ -13,5 +13,19 @@
   <strong>Description:</strong>
   <%= @item.description %>
 </p>
+<button data-stripe="payment">Buy Item <%= number_to_currency(@item.price) %></button>
+
+<%= link_to 'Back', items_path %>
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    document.querySelector("[data-stripe='payment']").addEventListener("click", () => {
+        const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
+        stripe.redirectToCheckout({
+            sessionId: "<%= @session_id %>"
+        });
+    });
+</script>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
