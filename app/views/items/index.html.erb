@@ -157,9 +157,10 @@
     </div>
   <% end %>
   </div>
-
-  <section>
-    <% @items.each do |item| %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+          <% @items.each do |item| %>
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" <%= image_tag item.item_picture if item.item_picture.attached? %> <%= item.title %>
           <div class="card-body">
@@ -170,5 +171,9 @@
           </div>
         </div>      
     <% end %>
-  </section>
+    </div>
+  </div>
+</div>
+
 </main>
+ 
