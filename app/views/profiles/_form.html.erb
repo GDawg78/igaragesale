@@ -1,53 +1,99 @@
 <%= form_with(model: profile, local: true) do |form| %>
 
 <form>
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
+  <div class="container">    
+            
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+            </div>  
+            <div class="panel-body" >
+                <form method="post" action=".">
+                    <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                            
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
+                    <form  class="form-horizontal" method="post" >
+                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                        <div id="div_id_select" class="form-group required">
+                        </div> 
+                        <div id="div_id_As" class="form-group required">
+                            <div class="controls col-md-8 "  style="margin-bottom: 10px">
+                            </div>
+                        </div>
+                        <div id="div_id_username" class="form-group required">
+                            <label for="id_username" class="control-label col-md-4  requiredField"> Username<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-8 ">
+                                <%= form.text_field :username %>
+                            </div>
+                        </div>
+                        <div id="div_id_email" class="form-group required">
+                            <label for="id_email" class="control-label col-md-4  requiredField"> First name<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-8 ">
+                                <%= form.text_field :first_name %>
+                            </div>     
+                        </div>
+                        <div id="div_id_name" class="form-group required"> 
+                            <label for="id_name" class="control-label col-md-4  requiredField"> Surname<span class="asteriskField">*</span> </label> 
+                            <div class="controls col-md-8 "> 
+                                <%= form.text_field :surname %>
+                            </div>
+                        </div>
+                        </div>
+                        <div id="div_id_company" class="form-group required"> 
+                            <label for="id_company" class="control-label col-md-4  requiredField"> Flat Number </label>
+                            <div class="controls col-md-8 "> 
+                                 <%= form.text_field :flat_no %>
+                            </div>
+                        </div> 
+                        <div id="div_id_catagory" class="form-group required">
+                            <label for="id_catagory" class="control-label col-md-4  requiredField"> Street Number<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-8 "> 
+                                 <%= form.text_field :street_no %>
+                            </div>
+                        </div> 
+                        <div id="div_id_number" class="form-group required">
+                             <label for="id_number" class="control-label col-md-4  requiredField"> Street Name<span class="asteriskField">*</span> </label>
+                             <div class="controls col-md-8 ">
+                                 <%= form.text_field :street_name %>
+                            </div> 
+                        </div> 
+                        <div id="div_id_location" class="form-group required">
+                            <label for="id_location" class="control-label col-md-4  requiredField"> Post Code<span class="asteriskField">*</span> </label>
+                            <div class="controls col-md-8 ">
+                                <%= form.text_field :post_code %>
+                            </div> 
+                        </div>
+                        <div id="div_id_number" class="form-group required">
+                                <%= form.label :state %><br>
+                                <%= form.collection_select :state_id, State.all, :id, :state %> 
+                        </div> 
 
-  <div class="field">
-    <%= form.label :surname %>
-    <%= form.text_field :surname %>
-  </div>
+                        <div class="field">
+                          <%= form.label :profile_picture %>
+                          <%= form.file_field :profile_picture, accept: 'image/png, image/jpeg, image/jpg' %>
+                        </div>                                    
+                            </div>
+                        </div> 
+                        <div class="form-group"> 
+                            <div class="aab controls col-md-4 "></div>
+                            <div class="controls col-md-8 ">
+                                <input type="submit" name="Signup" value="Signup" class="btn btn-primary btn btn-info" id="submit-id-signup" <%= form.submit %>
+                            </div>
+                        </div> 
+                            
+                    </form>
 
-  <div class="field">
-    <%= form.label :profile_picture %>
-    <%= form.file_field :profile_picture, accept: 'image/png, image/jpeg, image/jpg' %>
-  </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>
+    
 
-  <div class="field">
-    <%= form.label :flat_no %>
-    <%= form.text_field :flat_no %>
-  </div>
 
-  <div class="field">
-    <%= form.label :street_no %>
-    <%= form.text_field :street_no %>
-  </div>
 
-  <div class="field">
-    <%= form.label :street_name %>
-    <%= form.text_field :street_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :post_code %>
-    <%= form.text_field :post_code %>
-  </div>
-  
-    <div class="field">
-    <%= form.label :state %><br>
-    <%= form.collection_select :state_id, State.all, :id, :state %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>            
 </form>
 <% end %>
