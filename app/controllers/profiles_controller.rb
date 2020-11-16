@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
     before_action :set_profile, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!, only: [:create, :update]
-    # before_action :authorise_check, only: [:edit, :destroy]
+    before_action :authenticate_user!
+    before_action :authorise_check, only: [:edit, :update, :destroy]
     def index 
         @profiles = Profile.all
     end
@@ -55,10 +55,10 @@ class ProfilesController < ApplicationController
       def profile_params
         params.require(:profile).permit(:username, :first_name, :surname, :profile_picture, :flat_no, :street_no, :street_name, :post_code, :state_id)
       end
-      # def authorise_check
-      #   if current_user.profile.id != current_user.profile.id
-      #     flash[:notice] = 'You can only do this to your own items...'
-      #     redirect_to items_path
-      #   end
-      # end
+      def authorise_check
+        if current_user.profile != @profile
+          flash[:notice] = 'You can only make changes to your own profile...'
+          redirect_to items_path
+        end
+      end
 end
