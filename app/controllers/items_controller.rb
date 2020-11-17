@@ -10,27 +10,29 @@ class ItemsController < ApplicationController
 
 
   def show
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      customer_email: current_user.email,
-      line_items: [{
-          name: @item.title,
-          description: @item.description,
-          # images: @item.item_picture, NEED TO FIX THIS...
-          amount: (@item.price * 100).to_i,
-          currency: 'aud',
-          quantity: 1
-      }],
-      payment_intent_data: {
-          metadata: {
-              item_id: @item.id,
-              user_id: current_user.profile.username
-          }
-      },
-      success_url: "#{root_url}payments/success?itemId=#{@item.id}",
-      cancel_url: "#{root_url}items"
-      )
-    @session_id = session.id
+    if current_user
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        customer_email: current_user.email,
+        line_items: [{
+            name: @item.title,
+            description: @item.description,
+            # images: @item.item_picture, NEED TO FIX THIS...
+            amount: (@item.price * 100).to_i,
+            currency: 'aud',
+            quantity: 1
+        }],
+        payment_intent_data: {
+            metadata: {
+                item_id: @item.id,
+                user_id: current_user.profile.username
+            }
+        },
+        success_url: "#{root_url}payments/success?itemId=#{@item.id}",
+        cancel_url: "#{root_url}items"
+        )
+      @session_id = session.id
+    end
   end
 
   def new
@@ -72,7 +74,9 @@ class ItemsController < ApplicationController
           format.json { head :no_content }
         end
   end
+  def stripe_payment_success
 
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -83,8 +87,9 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:title, :price, :description, :item_picture, :sold)
     end
+    
     def authorise_check
-      if current_user.profile.id != @item.profile_id
+      if current_user.nil? || current_user.profile.id != @item.profile_id
         flash[:notice] = 'You can only do this to your own items...'
         redirect_to items_path
       end
