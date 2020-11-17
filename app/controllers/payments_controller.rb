@@ -5,7 +5,7 @@ class PaymentsController < ApplicationController
         transaction = @item.transactions.build buyer_id: params['buyerId'], seller_id: current_user.id
         @item.sold = true
         @item.save
-
+        
         if transaction.save
             render 'success'
         else

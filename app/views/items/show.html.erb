@@ -68,12 +68,12 @@
           <div class="col-md-6">
 
             <h1><%= @item.title %></h1>
-            <p><span class="mr-1"><strong>$ <%= @item.price %></strong></span></p>
+            <p><span class="mr-1"><strong>$ <%= '%.2f' % @item.price %></strong></span></p>
             <p class="pt-1"><%= @item.description %></p>
             <div class="table-responsive">
             </div>
             <hr>
-<% if current_user %>
+<% if current_user && @item.sold != true %>
   <button data-stripe="payment">Buy Item <%= number_to_currency(@item.price) %></button>
   <script src="https://js.stripe.com/v3/"></script>
 
@@ -86,8 +86,8 @@
       });
   </script>
 <% end %>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
+<% if current_user && @item.sold != true %> <%= link_to 'Edit', edit_item_path(@item) %>
+<% end %>
 <%= link_to 'Show All', items_path %>
     </div>
   </div>

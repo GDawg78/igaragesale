@@ -3,4 +3,7 @@ class Item < ApplicationRecord
      validates :title, presence: true
      belongs_to :profile
      has_many :transactions
+     validates :title, presence: true
+     validates :description, presence: true
+     validates :price, presence: true 
 end
