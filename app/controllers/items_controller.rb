@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
                 user_id: current_user.profile.username
             }
         },
-        success_url: "#{root_url}payments/success?itemId=#{@item.id}",
+        success_url: "#{root_url}payments/success?itemId=#{@item.id}&buyerId=#{current_user.id}",
         cancel_url: "#{root_url}items"
         )
       @session_id = session.id
@@ -74,9 +74,7 @@ class ItemsController < ApplicationController
           format.json { head :no_content }
         end
   end
-  def stripe_payment_success
 
-  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item

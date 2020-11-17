@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :charges
   match '/help', to: 'static_pages#help', via: 'get', as: :help
   match '/about', to: 'static_pages#about', via: 'get', as: :about
-  m
+  get 'payments/success', to: 'payments#success'
+  resources :payments
 end
