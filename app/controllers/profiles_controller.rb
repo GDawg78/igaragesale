@@ -56,7 +56,7 @@ class ProfilesController < ApplicationController
         params.require(:profile).permit(:username, :first_name, :surname, :profile_picture, :flat_no, :street_no, :street_name, :post_code, :state_id)
       end
       def authorise_check
-        if current_user.profile != @profile
+        if current_useer.nil? || current_user.profile != @profile
           flash[:notice] = 'You can only make changes to your own profile...'
           redirect_to items_path
         end
