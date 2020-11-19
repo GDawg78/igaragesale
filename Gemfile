@@ -70,4 +70,3 @@ gem 'jquery-rails'
 gem 'ultrahook'
 
 # PGSearch
-gem 'pg_search', '~> 1.0', '>= 1.0.5'

@@ -13,21 +13,21 @@
   
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, required: true %>
   </div>
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, required: true %>
   </div>
 
     <div class="field">
     <%= form.label :item_picture %>
-    <%= form.file_field :item_picture, accept: 'image/png, image/jpeg, image/jpg' %>
+    <%= form.file_field :item_picture, required: true, accept: 'image/png, image/jpeg, image/jpg' %>
   </div>
 
   <div class="actions">
