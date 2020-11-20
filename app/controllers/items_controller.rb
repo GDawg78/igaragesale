@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  # load_and_authorize_resource
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
   before_action :authorise_check, only: [:edit, :destroy]
